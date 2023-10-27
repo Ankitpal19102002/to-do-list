@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Styled To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #taskInput {
+            width: 70%;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #taskList {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    
+    <input type="text" id="taskInput" placeholder="Add a new task">
+    <button onclick="addTask()">Add</button>
+    
+    <ul id="taskList">
+        <!-- Tasks will be added here dynamically -->
+    </ul>
+    
+    <script>
+        // Function to add a new task
+        function addTask() {
+            var taskInput = document.getElementById("taskInput");
+            var taskText = taskInput.value.trim();
+            
+            if (taskText === "") {
+                alert("Please enter a task.");
+                return;
+            }
+            
+            var taskList = document.getElementById("taskList");
+            
+            // Create a new list item with a checkbox and task text
+            var taskItem = document.createElement("li");
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            taskItem.appendChild(checkbox);
+            
+            var taskTextNode = document.createTextNode(taskText);
+            taskItem.appendChild(taskTextNode);
+            
+            // Add the new task item to the task list
+            taskList.appendChild(taskItem);
+            
+            // Clear the input field
+            taskInput.value = "";
+        }
+    </script>
+</body>
+</html>
